@@ -6,6 +6,8 @@ import React,{
     Component
 } from 'react';
 
+import PropTypes from 'prop-types';
+
 /**
  * Components
  */
@@ -48,6 +50,15 @@ class Button extends Component {
             </div>
         );
     }
+}
+
+Button.propTypes = {
+    type: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    disabled: PropTypes.bool.isRequired,
+    width: PropTypes.string.isRequired,
+    height: PropTypes.string.isRequired,
+    borderRadius: PropTypes.string.isRequired
 }
 
 export default Button;

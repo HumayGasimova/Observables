@@ -36,6 +36,7 @@
   "dependencies": {
     "connected-react-router": "^6.3.2",
     "firebase-tools": "^7.2.1",
+    "prop-types": "^15.7.2",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-spring": "^8.0.20",
