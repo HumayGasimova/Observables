@@ -14,7 +14,7 @@ import {
    bindActionCreators
 } from 'redux';
 
-import store from '../store/store';
+import store from './store/store';
 
 /**
  * Components
@@ -31,7 +31,8 @@ import './app.scss';
  * Actions
  */
 
-import * as Actions from '../actions';
+import * as Actions from './actions';
+
 
 /**
  * App component definition and export
@@ -58,9 +59,9 @@ export class App extends Component {
 
    render(){
       return(
-         <div>
-           {"Hey"}
-         </div>
+   <div>
+           {"hey"}
+   </div>
       );
    }
 }

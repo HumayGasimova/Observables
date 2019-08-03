@@ -26,7 +26,7 @@ import store from './store/store';
  * Components
  */
 
-import App from './components/app';
+import App from './app';
 
 
 // const store = configureStore()
