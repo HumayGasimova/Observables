@@ -27,10 +27,7 @@ import store from './store/store';
  */
 
 import App from './components/app';
-import App4x4 from './components/app4x4';
-import Welcome from './components/WelcomePage/welcomePage';
-import Login from './components/WelcomePage/Login/login';
-import SignUp from './components/WelcomePage/SignUp/signUp';
+
 
 // const store = configureStore()
 
@@ -41,11 +38,11 @@ ReactDOM.render(
             <Switch>
                <Route 
                   exact 
-                  path="/tictactoe"
+                  path="/"
                   component={App}
                   // render={props => <App {...props}/>}
                   />
-               <Route 
+               {/* <Route 
                   exact 
                   path="/tictactoe4x4"
                   component={App4x4}
@@ -57,7 +54,7 @@ ReactDOM.render(
                   component={SignUp}
                   // render={props => <Welcome {...props}/>}
                   />
-              
+               */}
                {/* <Redirect from="/" to="/Welcome"/> */}
                
               
