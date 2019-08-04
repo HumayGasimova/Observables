@@ -20,6 +20,7 @@ import store from './store/store';
  * Components
  */
 
+import Button from './library/Button/button';
 
 /**
  * Styles
@@ -60,7 +61,8 @@ export class App extends Component {
    render(){
       return(
    <div>
-           {"hey"}
+           <Button 
+           text={'hey'}/>
    </div>
       );
    }
