@@ -77,6 +77,12 @@ export class App extends Component {
          .then(res=>console.log(res))
          .catch(err=> console.log(err))
     }
+
+    componentDidMount () {
+      axios.get('/orders.json')
+      .then(res=>console.log(res))
+      .catch(err=> console.log(err))
+    }
    /**
     * Markup
     */
