@@ -25,6 +25,7 @@ import axios from './axios-url';
 import Button from './library/Button/button';
 import withErrorHandler from './library/withErrorHandler/withErrorHandler';
 import Modal from './library/Modal/modal';
+import ContactData from './library/ContactData/contactData';
 
 /**
  * Styles
@@ -83,16 +84,25 @@ export class App extends Component {
       .then(res=>console.log(res))
       .catch(err=> console.log(err))
     }
+
+    getValue = (e) => {
+      this.setState({
+          [e.target.id]: e.target.value
+      })
+  }
    /**
     * Markup
     */
 
    render(){
       return(
-   <div>
-           <Button onClick={this.handleOnClick}
-           text={'hey'}/>
-   </div>
+         <div>
+            <Button 
+               onClick={this.handleOnClick}
+               text={'hey'}
+            />
+           <ContactData/>
+         </div>
       );
    }
 }
