@@ -16,11 +16,15 @@ import {
 
 import store from './store/store';
 
+import axios from './axios-url';
+
 /**
  * Components
  */
 
 import Button from './library/Button/button';
+import withErrorHandler from './library/withErrorHandler/withErrorHandler';
+import Modal from './library/Modal/modal';
 
 /**
  * Styles
@@ -54,6 +58,25 @@ export class App extends Component {
     * Methods
     */
 
+    handleOnClick = () => {
+      const order = {
+         ingredients: this.state.ingredients,
+         price: this.state.totalPrice,
+         customer: {
+             name: 'Max Schwarzmüller',
+             address: {
+                 street: 'Teststreet 1',
+                 zipCode: '41351',
+                 country: 'Germany'
+             },
+             email: 'test@test.com'
+         },
+         deliveryMethod: 'fastest'
+     }
+         axios.post('/orders.json', order )
+         .then(res=>console.log(res))
+         .catch(err=> console.log(err))
+    }
    /**
     * Markup
     */
@@ -61,7 +84,7 @@ export class App extends Component {
    render(){
       return(
    <div>
-           <Button 
+           <Button onClick={this.handleOnClick}
            text={'hey'}/>
    </div>
       );
@@ -84,5 +107,5 @@ export default connect(
          // setXPlayer: bindActionCreators(Actions.setXPlayer, dispatch)
       };
    }
-)(App);
+)(withErrorHandler(App, axios));
 
