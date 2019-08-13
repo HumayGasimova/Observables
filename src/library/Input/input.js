@@ -48,13 +48,14 @@ class InputField extends Component {
     // }
 
     renderInput = () => {
-        switch (this.props.elementType){
+        switch (this.props.elementtype){
             case ('input'):
                 return( 
                     <input 
                         className={this.props.className} 
                         value={this.props.value} 
-                        {...this.props.elementConfig}
+                        {...this.props.elementconfig}
+                        onChange={this.props.onChange}
                     />
                 );
             case ('textarea'):
@@ -62,14 +63,33 @@ class InputField extends Component {
                 <textarea 
                     className={this.props.className} 
                     {...this.props}
+                    onChange={this.props.onChange}
                 />
+                );
+            case ('select'):
+                return(
+                <select 
+                    className={this.props.className} 
+                    {...this.props}
+                    onChange={this.props.onChange}
+                >
+                   {this.props.elementconfig.options.map(option => (
+                    <option 
+                        key={option.value}
+                        value={option.value}
+                    >
+                        {option.displayValue}
+                    </option>
+                   ))}
+                </select>
                 );
             default:
                 return(
                     <input 
                         className={this.props.className} 
                         value={this.props.value} 
-                        {...this.props.elementConfig}
+                        {...this.props.elementconfig}
+                        onChange={this.props.onChange}
                     />
                 );
                
