@@ -12,6 +12,7 @@ import React,{
 
 import Input from '../Input/input';
 import Button from '../Button/button';
+import axios from '../../axios-url';
 
 /**
  * Styles
@@ -115,6 +116,23 @@ class ContactData extends Component {
     }
 
 
+    onSubmitHandler = (event) => {
+        event.preventDefault();
+        const formData = {};
+
+        for (let formElementIdentifier in this.state.orderForm) {
+            formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value
+        }
+
+        const order = {
+            orderData: formData
+        }
+        
+        axios.post('/orders.json', order )
+        .then(res=>console.log(res))
+        .catch(err=> console.log(err))
+    }
+
    renderInput = () => {
         const formElementsArray = [];
         for(let key in this.state.orderForm){
@@ -123,10 +141,9 @@ class ContactData extends Component {
                 config: this.state.orderForm[key]
             })
         }
-        console.log(formElementsArray)
         return(
-            <form>
-                {formElementsArray.map((formElement,i) => {
+            <form onSubmit={this.onSubmitHandler}>
+                {formElementsArray.map((formElement) => {
                     return(
                         <Input 
                             key={formElement.id}

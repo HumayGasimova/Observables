@@ -85,11 +85,7 @@ export class App extends Component {
       .catch(err=> console.log(err))
     }
 
-    getValue = (e) => {
-      this.setState({
-          [e.target.id]: e.target.value
-      })
-  }
+
    /**
     * Markup
     */
