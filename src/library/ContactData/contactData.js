@@ -45,7 +45,8 @@ class ContactData extends Component {
                         required: true
                     },
                     valid: "false",
-                    touched: "false"
+                    touched: "false",
+                    errorMessage: "Please enter name!"
                 },
                 street: {
                     elementType: 'input',
@@ -58,7 +59,8 @@ class ContactData extends Component {
                         required: true
                     },
                     valid: "false",
-                    touched: "false"
+                    touched: "false",
+                    errorMessage: "Please enter street!"
                 },
                 zipCode: {
                     elementType: 'input',
@@ -73,7 +75,8 @@ class ContactData extends Component {
                         maxLength: 5
                     },
                     valid: "false",
-                    touched: "false"
+                    touched: "false",
+                    errorMessage: "Please enter valid ZIP code!"
                 },
                 country: {
                     elementType: 'input',
@@ -86,7 +89,8 @@ class ContactData extends Component {
                         required: true
                     },
                     valid: "false",
-                    touched: "false"
+                    touched: "false",
+                    errorMessage: "Please enter country!"
                 },
                 email: {
                     elementType: 'input',
@@ -99,7 +103,8 @@ class ContactData extends Component {
                         required: true
                     },
                     valid: "false",
-                    touched: "false"
+                    touched: "false",
+                    errorMessage: "Please enter valid email!"
                 },
                 deliveryMethod: {
                     elementType: 'select',
@@ -207,6 +212,8 @@ class ContactData extends Component {
                     // console.log(!formElement.config.valid)
                     return(
                         <Input 
+                            classnameerror={"error"}
+                            errormessage={formElement.config.errorMessage}
                             valid={formElement.config.valid}
                             key={formElement.id}
                             elementtype={formElement.config.elementType} 
@@ -216,6 +223,7 @@ class ContactData extends Component {
                             shouldvalidate={formElement.config.validation}
                             className={null}
                             touched={formElement.config.touched}
+                            
                         />
                     )
                 })}
@@ -239,8 +247,6 @@ class ContactData extends Component {
         return(
            <div>
               {this.renderInput()}
-               
-
            </div>
         );
     }
