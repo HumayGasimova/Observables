@@ -26,16 +26,16 @@ class InputField extends Component {
     * Constructor
     */
 
-    constructor (props){
-        super(props);
-        this.state={
-            value: ''
-        }
-    }
+    // constructor (props){
+    //     super(props);
+    //     this.state={
+    //         value: ''
+    //     }
+    // }
     
-    handleOnChange = (e) => {
-       this.props.getValue(e)
-    }
+    // handleOnChange = (e) => {
+    //    this.props.getValue(e)
+    // }
 
     // handleOnClick = () => {
     //     alert(this.state.value)
@@ -52,7 +52,7 @@ class InputField extends Component {
             case ('input'):
                 return( 
                     <input 
-                        className={this.props.className} 
+                        className={this.props.valid && this.props.shouldvalidate !== "undefined" ? this.props.className : "invalid"} 
                         value={this.props.value} 
                         {...this.props.elementconfig}
                         onChange={this.props.onChange}
@@ -61,7 +61,7 @@ class InputField extends Component {
             case ('textarea'):
                 return(
                 <textarea 
-                    className={this.props.className} 
+                    className={this.props.invalid ? "invalid": null} 
                     {...this.props}
                     onChange={this.props.onChange}
                 />
@@ -69,7 +69,7 @@ class InputField extends Component {
             case ('select'):
                 return(
                 <select 
-                    className={this.props.className} 
+                    className={this.props.invalid ? "invalid": null}
                     {...this.props}
                     onChange={this.props.onChange}
                 >
@@ -86,7 +86,7 @@ class InputField extends Component {
             default:
                 return(
                     <input 
-                        className={this.props.className} 
+                        className={this.props.invalid ? "invalid": null} 
                         value={this.props.value} 
                         {...this.props.elementconfig}
                         onChange={this.props.onChange}
@@ -115,7 +115,7 @@ class InputField extends Component {
                 /> */}
                     {/* <button onClick={this.handleOnClick}>Add</button> */}
                     {this.renderInput()}
-                <div>{this.state.value}</div>
+                {/* <div>{this.state.value}</div> */}
             </div>
         );
     }

@@ -142,7 +142,7 @@ class ContactData extends Component {
     checkValidity = (value, rules) => {
         let isValid = true;
 
-        if(rules.required){
+        if(rules.required ){
             isValid = value.trim() !== '' && isValid;
         }
 
@@ -185,13 +185,17 @@ class ContactData extends Component {
         return(
             <form onSubmit={this.onSubmitHandler}>
                 {formElementsArray.map((formElement) => {
+                    // console.log(!formElement.config.valid)
                     return(
                         <Input 
+                            valid={formElement.config.valid}
                             key={formElement.id}
                             elementtype={formElement.config.elementType} 
                             elementconfig={formElement.config.elementConfig}
                             value={formElement.config.value}
                             onChange={(event) => this.inputChangedHandler(event, formElement.id)}
+                            shouldvalidate={formElement.config.validation}
+                            className={null}
                         />
                     )
                 })}

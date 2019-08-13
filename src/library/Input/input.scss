@@ -3,3 +3,8 @@ input {
     width:200px;
     height: 37px;
 }
+
+.invalid {
+    border: 1px solid red;
+    background-color: rgb(247, 181, 181);
+}
