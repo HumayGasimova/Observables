@@ -38,6 +38,7 @@ import './app.scss';
  */
 
 import * as Actions from './actions';
+import Login from './library/Login/login';
 
 
 /**
@@ -97,7 +98,7 @@ export class App extends Component {
                onClick={this.handleOnClick}
                text={'hey'}
             />
-           <ContactData/>
+           <Login/>
          </div>
       );
    }
