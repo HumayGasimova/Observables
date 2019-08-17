@@ -45,6 +45,10 @@ class Login extends Component {
                         {
                             required: true,
                             valid: "false"
+                        },
+                        {
+                            isEmail: true,
+                            valid: "false"
                         }
                     ],
                     validField: "false",
@@ -129,10 +133,13 @@ class Login extends Component {
         if(rules){
             rules.map((rule) => {
                 if(rule.required && rule.valid === "false"){
-                    errors.push(`Please enter valid ${inputIdentifier}`)
+                    errors.push(`Please enter ${inputIdentifier}`)
                 }
                 if(rule.minLength && rule.valid === "false"){
                     errors.push(`${inputIdentifier.charAt(0).toUpperCase() + inputIdentifier.slice(1)} should be more than 8 charachters!`)
+                }
+                if(rule.isEmail && rule.valid === "false"){
+                    errors.push(`Please enter valid ${inputIdentifier}`)
                 }
             })
         }
@@ -151,6 +158,20 @@ class Login extends Component {
                 }
                 if(rule.minLength){
                     let isValid = value.length >= rule.minLength;
+                    validation.push({...rule,valid: isValid.toString()});
+                }
+                if(rule.maxLength){
+                    let isValid = value.length <= rules.maxLength 
+                    validation.push({...rule,valid: isValid.toString()});
+                }
+                if(rule.isEmail){
+                    const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+                    let isValid = pattern.test(value);
+                    validation.push({...rule,valid: isValid.toString()});
+                }
+                if(rule.isNumeric){
+                    const pattern = /^\d+$/;
+                    let isValid = pattern.test(value);
                     validation.push({...rule,valid: isValid.toString()});
                 }
             
